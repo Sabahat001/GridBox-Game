@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com/" ></script>
+    <title>Document</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+  <h1 class="text-center text-[30px]">Grid Box</h1>
+  <div class="flex justify-center pt-10">
+    <div class="grid grid-cols-3 w-[800px]" id="gridBox">
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+      <div class="h-[100px] bg-red-400 border border-black"></div>
+    </div>
+  </div>
+
+  <button id="generateButton">Generate Numbers</button>
+
+  <script>
+    function generateUniqueNumbers() {
+      var numbers = [];
+      while (numbers.length < 9) {
+        var randomNum = Math.floor(Math.random() * 9) + 1;
+        if (!numbers.includes(randomNum)) {
+          numbers.push(randomNum);
+        }
+      }
+      return numbers;
+    }
+
+    function updateGridWithUniqueNumbers() {
+      var uniqueNumbers = generateUniqueNumbers();
+      var gridItems = document.querySelectorAll('#gridBox > div');
+      for (var i = 0; i < gridItems.length; i++) {
+        gridItems[i].innerText = uniqueNumbers[i];
+      }
+    }
+    document.getElementById('generateButton').addEventListener('click', updateGridWithUniqueNumbers);
+  </script>
+</body>
+</html>
